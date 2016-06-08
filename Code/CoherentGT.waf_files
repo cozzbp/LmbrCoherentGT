@@ -1,0 +1,26 @@
+{
+    "NoUberFile": {
+        "Root": [
+            "Source/StdAfx.cpp",
+            "Source/StdAfx.h"
+        ]
+    },
+    "auto": {
+        "Interface": [
+            "Include/CoherentGT/ICoherentGTGem.h"
+        ],
+        "Implementation": [
+            "Source/CoherentGTGem.h",
+            "Source/CoherentGTGem.cpp"
+        ],
+		"Implementation/Helpers": [
+			"Source/Helpers/SimpleLogger.h",
+			"Source/Helpers/FileResourceHandler.h",
+			"Source/Helpers/SimpleViewListener.h"
+		],
+		"Implementation/Backends": [
+			"Source/Backends/Dx11Backend.h",
+			"Source/Backends/Dx11Backend.cpp"
+        ]
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "GemFormatVersion": 2,
+    "Uuid": "7cb7eba73210443fb50a234215d34baf",
+    "Name": "CoherentGT",
+    "DisplayName": "CoherentGT",
+    "Version": "0.1.0",
+    "LinkType": "Dynamic",
+    "Summary": "An Amazon Lumberyard gem for integrating CoherentGT",
+    "Tags": ["Untagged"],
+    "IconPath": "preview.png"
+}
