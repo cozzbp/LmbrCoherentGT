@@ -46,8 +46,6 @@ namespace CoherentGT
 		int m_height;
 		int m_texid;
 
-
-		ITexture* temp;
 		ID3D11Texture2D* m_texture;
 		ID3D11Texture2D* m_stencilTexture;
 		ID3D11DepthStencilView* m_stencilView;

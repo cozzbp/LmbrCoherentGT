@@ -33,8 +33,6 @@ void CoherentGT::CoherentGTGem::OnSystemEvent(ESystemEvent event, UINT_PTR wpara
 
 void CoherentGT::CoherentGTGem::Init()
 {
-
-	temp = gEnv->pRenderer->EF_LoadTexture("EngineAssets/Textures/startscreen.tif", FT_DONT_STREAM | FT_DONT_RESIZE | FT_NOMIPS | FT_USAGE_ALLOWREADSRGB);
 	CryLogAlways("INIT COHERENT GT GEM");
 	Coherent::UIGT::SystemSettings settings;
 	settings.DebuggerPort = 9999;
@@ -145,15 +143,7 @@ void CoherentGT::CoherentGTGem::OnPostUpdate(float fDeltaTime)
 
 	m_viewRenderer->Paint();
 
-	//gEnv->pRenderer->SetCullMode(R_CULL_DISABLE);
-	//gEnv->pRenderer->Set2DMode(true, m_width, m_height);
-	//gEnv->pRenderer->SetColorOp(eCO_MODULATE, eCO_MODULATE, DEF_TEXARG0, DEF_TEXARG0, true);
-	//gEnv->pRenderer->SetState(GS_BLSRC_SRCALPHA | GS_BLDST_ONEMINUSSRCALPHA | GS_NODEPTHTEST);
-	//gEnv->pRenderer->Draw2dImageStretchMode(true);
-	//gEnv->pRenderer->DrawImage(0, 0, m_width, m_height, temp->GetTextureID(), 0, 1, 1, 0, 1, 1, 1, 1, false);
-
-	//gEnv->pRenderer->Draw2dImageStretchMode(false);
-	//gEnv->pRenderer->Set2DMode(false, 0, 0);
+	//Drawing goes here
 }
 
 GEM_REGISTER(CoherentGT::CoherentGTGem)
