@@ -3,7 +3,9 @@ def build(bld):
     bld.DefineGem(
         # Add custom build options here
         includes    = [Path('Code/CryEngine/CryAction'),
-					   Path('Code/SDKs/CoherentGT/include')],
+					   Path('Code/SDKs/CoherentGT/include'),
+					   Path('Code/SDKs/CoherentGT/include/Coherent/UIGT'),
+					   ],
 		
 		win_features = [ 'CoherentGT' ]
     )

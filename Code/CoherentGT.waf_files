@@ -12,7 +12,7 @@
         "Implementation": [
             "Source/CoherentGTGem.h",
             "Source/CoherentGTGem.cpp"
-        ],
+		],
 		"Implementation/Helpers": [
 			"Source/Helpers/SimpleLogger.h",
 			"Source/Helpers/FileResourceHandler.h",

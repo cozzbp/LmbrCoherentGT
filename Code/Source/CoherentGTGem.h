@@ -26,6 +26,44 @@
 
 #include "Backends/Dx11Backend.h"
 
+
+const char SCREEN_QUAD_SHADER[] = ""
+"														  \n"
+"Texture2D txDiffuse : register(t0);					  \n"
+"														  \n"
+"SamplerState samLinear : register(s0);					  \n"
+"														  \n"
+"struct VSScreenQuadInput								  \n"
+"{														  \n"
+"	float4 Position : POSITION0;						  \n"
+"	float2 TexCoords0 : TEXCOORD0;						  \n"
+"};														  \n"
+"														  \n"
+"struct VSScreenQuadOutput								  \n"
+"{														  \n"
+"	float4 Position : SV_POSITION;						  \n"
+"	float2 TexCoords0 : TEXCOORD0;						  \n"
+"};														  \n"
+"														  \n"
+"VSScreenQuadOutput VS(VSScreenQuadInput input)			  \n"
+"{														  \n"
+"	VSScreenQuadOutput output = (VSScreenQuadOutput)0;	  \n"
+"														  \n"
+"	input.Position.xy = sign(input.Position.xy);		  \n"
+"	output.Position = float4(input.Position.xy, 0, 1);	  \n"
+"														  \n"
+"	output.TexCoords0 = input.TexCoords0;				  \n"
+"														  \n"
+"	return output;										  \n"
+"}														  \n"
+"														  \n"
+"float4 PS(VSScreenQuadOutput input) : SV_Target		  \n"
+"{														  \n"
+"	return txDiffuse.Sample(samLinear, input.TexCoords0); \n"
+"}														  \n"
+"														  \n";
+
+
 namespace CoherentGT
 {
 	class CoherentGTGem : public ICoherentGTGem, public IGameFrameworkListener
@@ -39,12 +77,14 @@ namespace CoherentGT
 
 		void Init();
 	private:
-		Coherent::UIGT::UISystem* m_UISystem;
-		SimpleLogger m_LogHandler;
 
 		int m_width;
 		int m_height;
-		int m_texid;
+		int m_crytex;
+
+
+		Coherent::UIGT::UISystem* m_UISystem;
+		SimpleLogger m_LogHandler;
 
 		ID3D11Texture2D* m_texture;
 		ID3D11Texture2D* m_stencilTexture;
@@ -56,5 +96,29 @@ namespace CoherentGT
 
 		Coherent::UIGT::View* m_CurrentView;
 		Coherent::UIGT::ViewRenderer* m_viewRenderer;
+
+		IDXGISwapChain* m_SwapChain;
+
+		ID3D11RenderTargetView* m_BackBufferView;
+
+		ID3D11Texture2D* m_DepthStencil;
+		ID3D11DepthStencilView* m_BackDepthStencilView;
+
+		ID3D11DeviceContext* m_ImmediateContext;
+		ID3D11DepthStencilState* m_DefaultDepthStencilState;
+
+
+		//Screen quad
+		ID3D11VertexShader* m_VS;
+		ID3D11PixelShader* m_PS;
+		ID3D11InputLayout* m_InputLayout;
+		ID3D11Buffer* m_VB;
+		ID3D11Buffer* m_VBFlipped;
+		ID3D11Buffer* m_IndexBuffer;
+		ID3D11SamplerState* m_LinearSampler;
+
+		ID3D11RenderTargetView* m_RTV;
+
+
     };
 } // namespace CoherentGT
